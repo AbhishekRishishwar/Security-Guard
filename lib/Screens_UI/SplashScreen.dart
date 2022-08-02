@@ -27,18 +27,18 @@ class _Splash_ScreenState extends State<Splash_Screen> {
       {bool isNewTask = false,
         PageRouteAnimation? pageRouteAnimation,
         Duration? duration}) async {
-    // if (isNewTask) {
-    //   return await Navigator.of(context).pushAndRemoveUntil(
-    //     buildPageRoute(
-    //         this!, pageRouteAnimation ?? pageRouteAnimationGlobal, duration),
-    //         (route) => false,
-    //   );
-    // } else {
-    //   return await Navigator.of(context).push(
-    //     buildPageRoute(
-    //         this!, pageRouteAnimation ?? pageRouteAnimationGlobal, duration),
-    //   );
-    // }
+    if (isNewTask) {
+      return await Navigator.of(context).pushAndRemoveUntil(
+        buildPageRoute(
+            this!, pageRouteAnimation ?? pageRouteAnimationGlobal, duration),
+            (route) => false,
+      );
+    } else {
+      return await Navigator.of(context).push(
+        buildPageRoute(
+            this!, pageRouteAnimation ?? pageRouteAnimationGlobal, duration),
+      );
+    }
   }
 
 
