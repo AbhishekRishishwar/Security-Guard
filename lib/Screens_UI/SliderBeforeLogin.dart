@@ -3,6 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:security_guard/Screens_UI/LoginPage.dart';
 import 'package:security_guard/Widgets/ImagesWidgets.dart';
 
+class Slider_Pages extends StatefulWidget {
+  const Slider_Pages({Key? key}) : super(key: key);
+
+  @override
+  State<Slider_Pages> createState() => _Slider_PagesState();
+}
+
+class _Slider_PagesState extends State<Slider_Pages> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
+
 class Slider_First extends StatefulWidget {
   const Slider_First({Key? key}) : super(key: key);
 

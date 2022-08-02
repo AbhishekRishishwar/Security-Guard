@@ -16,20 +16,22 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Security Guard',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        appBarTheme: AppBarTheme(
-          iconTheme: IconThemeData(color: Colors.black),
-          color: Colors.blue,
-          foregroundColor: Colors.black,
-          systemOverlayStyle: SystemUiOverlayStyle( //<-- SEE HERE
-            // Status bar color
-            statusBarColor: Colors.blue,
-            statusBarIconBrightness: Brightness.dark,
-            statusBarBrightness: Brightness.light,
-          ),
-        ),
+        pageTransitionsTheme: const PageTransitionsTheme(builders: {TargetPlatform.android: CupertinoPageTransitionsBuilder(),}),
+        
+        // primarySwatch: Colors.blue,
+        // appBarTheme: AppBarTheme(
+        //   iconTheme: IconThemeData(color: Colors.black),
+        //   color: Colors.blue,
+        //   foregroundColor: Colors.black,
+        //   systemOverlayStyle: SystemUiOverlayStyle( //<-- SEE HERE
+        //     // Status bar color
+        //     statusBarColor: Colors.blue,
+        //     statusBarIconBrightness: Brightness.dark,
+        //     statusBarBrightness: Brightness.light,
+        //   ),
+        // ),
       ),
       home: Splash_Screen()
     );
