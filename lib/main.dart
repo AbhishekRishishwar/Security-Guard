@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:security_guard/Screens_UI/LoginPage.dart';
+import 'package:security_guard/Screens_UI/Authentication//LoginPage.dart';
 import 'package:security_guard/Screens_UI/SliderBeforeLogin.dart';
 import 'package:security_guard/Screens_UI/SplashScreen.dart';
 

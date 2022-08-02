@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:security_guard/Screens_UI/LoginPage.dart';
+import 'package:security_guard/Screens_UI/Authentication//LoginPage.dart';
 import 'package:security_guard/Widgets/ImagesWidgets.dart';
 
 class Slider_Pages extends StatefulWidget {

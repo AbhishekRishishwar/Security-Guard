@@ -1,6 +1,6 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:security_guard/Screens_UI/Otp_verify.dart';
+import 'package:security_guard/Screens_UI/Authentication//Otp_verify.dart';
 
 class Forgot_Password extends StatefulWidget {
   const Forgot_Password({Key? key}) : super(key: key);

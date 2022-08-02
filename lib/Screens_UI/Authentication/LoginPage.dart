@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:security_guard/Data/Color.dart';
 import 'package:country_code_picker/country_code_picker.dart';
-import 'package:security_guard/Screens_UI/Forgot_Password.dart';
-import 'package:security_guard/Screens_UI/SignupPage.dart';
+import 'package:security_guard/Screens_UI/Authentication//Forgot_Password.dart';
+import 'package:security_guard/Screens_UI/Authentication//SignupPage.dart';
 
 class LogIn_Page extends StatefulWidget {
   const LogIn_Page({Key? key}) : super(key: key);

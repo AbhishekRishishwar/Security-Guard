@@ -2,7 +2,7 @@ import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:security_guard/Data/Color.dart';
-import 'package:security_guard/Screens_UI/LoginPage.dart';
+import 'package:security_guard/Screens_UI/Authentication//LoginPage.dart';
 
 class Signup_Page extends StatefulWidget {
   const Signup_Page({Key? key}) : super(key: key);

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:security_guard/Global_Components/otp_form.dart';
 
 class OTP_Verify extends StatefulWidget {
   const OTP_Verify({Key? key}) : super(key: key);
@@ -72,17 +73,10 @@ class _OTP_VerifyState extends State<OTP_Verify> {
                   padding: const EdgeInsets.all(30),
                   child: Column(
                     children: [
-                      Row(
-                        children: [
-                          TextFormField(
-                            keyboardType: TextInputType.visiblePassword,
-                            decoration: InputDecoration(
-
-                                isDense: true,
-                                ),
-                          ),
-                        ],
+                      SizedBox(
+                        height: 20,
                       ),
+                      const OtpForm(),
                       SizedBox(
                         height: 20,
                       ),
