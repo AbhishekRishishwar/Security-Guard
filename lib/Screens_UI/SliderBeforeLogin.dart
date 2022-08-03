@@ -1,7 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:nb_utils/nb_utils.dart';
+import 'package:security_guard/Constant.dart';
 import 'package:security_guard/Screens_UI/Authentication//LoginPage.dart';
 import 'package:security_guard/Widgets/ImagesWidgets.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class Slider_Pages extends StatefulWidget {
   const Slider_Pages({Key? key}) : super(key: key);
@@ -11,23 +14,46 @@ class Slider_Pages extends StatefulWidget {
 }
 
 class _Slider_PagesState extends State<Slider_Pages> {
+  PageController pageController = PageController(initialPage: 0);
+  int currentIndexPage = 0;
+  String buttonText = 'Next';
+  double percent = 0.34;
+
+  List<Map<String, dynamic>> sliderList = [
+    {
+      "icon": 'images/onboard1.png',
+      "title": 'Keep healthy work-life balance',
+      "description":
+          'Lorem ipsum dolor sit amet, consectetuer adipisci elit, sed diam nonummy nibh euismod tincidunt u laoreet dolore magna aliquam erat volutpat. Ut wi',
+    },
+    {
+      "icon": 'images/onboard2.png',
+      "title": 'Track your work & get result',
+      "description":
+          'Lorem ipsum dolor sit amet, consectetuer adipisci elit, sed diam nonummy nibh euismod tincidunt u laoreet dolore magna aliquam erat volutpat. Ut wi',
+    },
+    {
+      "icon": 'images/onboard3.png',
+      "title": 'Stay organized with team',
+      "description":
+          'Lorem ipsum dolor sit amet, consectetuer adipisci elit, sed diam nonummy nibh euismod tincidunt u laoreet dolore magna aliquam erat volutpat. Ut wi',
+    },
+  ];
+
   @override
-  Widget build(BuildContext context) {
-    return Container();
+  void initState() {
+    super.initState();
   }
-}
-
-
-class Slider_First extends StatefulWidget {
-  const Slider_First({Key? key}) : super(key: key);
 
   @override
-  State<Slider_First> createState() => _Slider_FirstState();
-}
+  void dispose() {
+    super.dispose();
+  }
 
-class _Slider_FirstState extends State<Slider_First> {
-  String imageUrl =
-      "https://image.shutterstock.com/image-vector/oh-bite-me-fishing-svg-260nw-1883166919.jpg";
+  @override
+  void setState(fn) {
+    if (mounted) super.setState(fn);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,10 +75,11 @@ class _Slider_FirstState extends State<Slider_First> {
                 children: [
                   InkWell(
                     onTap: () {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => LogIn_Page()));
+                      const LogIn_Page().launch(context);
+                      // Navigator.pushReplacement(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (context) => LogIn_Page()));
                     },
                     child: Text(
                       "Skip",
@@ -62,165 +89,125 @@ class _Slider_FirstState extends State<Slider_First> {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-              child: Image.network(
-                imageUrl,
-                width: MediaQuery.of(context).size.width,
-                height: 400,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width,
-                child: Text(
-                  "Keep Healthy \nWork Life Balance",
-                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width,
-                child: Text(
-                  "Lorem jhakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkdfjbvlllllllllllllllllllllllhdkshlffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffasbdskhlvbalkhdssdgdfsgsdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 5,
-                ),
-              ),
+            Stack(
+              alignment: Alignment.bottomCenter,
+              children: [
+                PageView.builder(
+                  itemCount: sliderList.length,
+                  controller: pageController,
+                  onPageChanged: (int index) =>
+                      setState(() => currentIndexPage = index),
+                  itemBuilder: (_, index) {
+                    return Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                          child: Image.network(
+                            sliderList[index]['icon'],
+                            width: MediaQuery.of(context).size.width,
+                            height: 400,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(20),
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width,
+                            child: Text(
+                              sliderList[index]['title'].toString() ,
+                              style: TextStyle(
+                                  fontSize: 40, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width,
+                            child: Text(
+                                sliderList[index]['description'].toString(),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 5,
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                )
+              ],
             ),
             SizedBox(
               height: 30,
             ),
-            Align(
-              alignment: Alignment.bottomRight,
-              child: Padding(
-                padding: const EdgeInsets.all(20),
-                child: Container(
-                    width: 80,
-                    height: 80,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushReplacement(
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: DotIndicator(
+                    currentDotSize: 15,
+                    dotSize: 6,
+                    pageController: pageController,
+                    pages: sliderList,
+                    indicatorColor: kMainColor,
+                    unselectedIndicatorColor: Colors.grey,
+                  ),
+                ),
+                const Spacer(),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: CircularPercentIndicator(
+                    radius: 80.0,
+                    lineWidth: 3.0,
+                    progressColor: kMainColor,
+                    percent: percent,
+                    animation: true,
+                    center: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          currentIndexPage < 2
+                              ? percent = percent + 0.33
+                              : percent = 1.0;
+                          currentIndexPage < 2
+                              ? pageController.nextPage(
+                              duration: const Duration(
+                                  microseconds: 3000),
+                              curve: Curves.bounceInOut)
+                              : Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Slider_Second()));
+                                builder: (context) =>
+                                const LogIn_Page()),
+                          );
+                        });
                       },
-                      child: Icon(Icons.arrow_forward_ios),
-                      style: ElevatedButton.styleFrom(
-                        shape: CircleBorder(),
-                        padding: EdgeInsets.all(24),
+                      child: const CircleAvatar(
+                        radius: 35.0,
+                        backgroundColor: kMainColor,
+                        child: Center(
+                          child: Icon(
+                            Icons.arrow_forward_ios,
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
-                    )),
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class Slider_Second extends StatefulWidget {
-  const Slider_Second({Key? key}) : super(key: key);
-
-  @override
-  State<Slider_Second> createState() => _Slider_SecondState();
-}
-
-class _Slider_SecondState extends State<Slider_Second> {
-  String imageUrl1 =
-      "https://t4.ftcdn.net/jpg/02/29/99/15/360_F_229991534_4gV4PSVqsF2Ekswa0dCfdyIUL33Gvd9p.jpg";
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        color: Colors.white,
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            SizedBox(
-              height: 35,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => LogIn_Page()));
-                    },
-                    child: Text(
-                      "Skip",
-                      style: TextStyle(fontSize: 20),
                     ),
-                  )
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-              child: Image.network(
-                imageUrl1,
-                width: MediaQuery.of(context).size.width,
-                height: 400,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width,
-                child: Text(
-                  "Keep Healthy \nWork Life Balance",
-                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                  ),
                 ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width,
-                child: Text(
-                  "Lorem jhakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkdfjbvlllllllllllllllllllllllhdkshlffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffasbdskhlvbalkhdssdgdfsgsdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 5,
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            Align(
-              alignment: Alignment.bottomRight,
-              child: Padding(
-                padding: const EdgeInsets.all(20),
-                child: Container(
+                Container(
+                    padding: const EdgeInsets.all(20),
                     width: 80,
                     height: 80,
                     child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Slider_third()));
-                      },
+                      onPressed: () {},
                       child: Icon(Icons.arrow_forward_ios),
                       style: ElevatedButton.styleFrom(
                         shape: CircleBorder(),
                         padding: EdgeInsets.all(24),
                       ),
                     )),
-              ),
-            )
+              ],
+            ),
+
           ],
         ),
       ),
@@ -228,106 +215,3 @@ class _Slider_SecondState extends State<Slider_Second> {
   }
 }
 
-class Slider_third extends StatefulWidget {
-  const Slider_third({Key? key}) : super(key: key);
-
-  @override
-  State<Slider_third> createState() => _Slider_thirdState();
-}
-
-class _Slider_thirdState extends State<Slider_third> {
-  String imageUrl2 =
-      "https://www.svgfiles.us/wp-content/uploads/Disney-friends-svg-free-300x300.jpg";
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        color: Colors.white,
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            SizedBox(
-              height: 35,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => LogIn_Page()));
-                    },
-                    child: Text(
-                      "",
-                      style: TextStyle(fontSize: 20),
-                    ),
-                  )
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-              child: Image.network(
-                imageUrl2,
-                width: MediaQuery.of(context).size.width,
-                height: 400,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width,
-                child: Text(
-                  "Keep Healthy \nWork Life Balance",
-                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width,
-                child: Text(
-                  "Lorem jhakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkdfjbvlllllllllllllllllllllllhdkshlffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffasbdskhlvbalkhdssdgdfsgsdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 5,
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            Align(
-              alignment: Alignment.bottomRight,
-              child: Padding(
-                padding: const EdgeInsets.all(20),
-                child: Container(
-                    width: 80,
-                    height: 80,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => LogIn_Page()));
-                      },
-                      child: Icon(Icons.arrow_forward_ios),
-                      style: ElevatedButton.styleFrom(
-                        shape: CircleBorder(),
-                        padding: EdgeInsets.all(24),
-                      ),
-                    )),
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}

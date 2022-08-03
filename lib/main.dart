@@ -14,12 +14,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // SystemChrome.setEnabledSystemUIOverlays([]);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Security Guard',
       theme: ThemeData(
         pageTransitionsTheme: const PageTransitionsTheme(builders: {TargetPlatform.android: CupertinoPageTransitionsBuilder(),}),
-        
+
+
         // primarySwatch: Colors.blue,
         // appBarTheme: AppBarTheme(
         //   iconTheme: IconThemeData(color: Colors.black),
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
         //   ),
         // ),
       ),
-      home: Splash_Screen()
+      home: Slider_Pages()
     );
   }
 }
