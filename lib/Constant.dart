@@ -62,9 +62,9 @@ List<String> employees = [
   '91 - 100',
 ];
 List<String> designations = [
-  'Designer',
   'Manager',
-  'Developer',
+  'SuperVisor',
+  'Guard',
   'Officer'
 ];
 
