@@ -90,7 +90,7 @@ class _Slider_PagesState extends State<Slider_Pages> {
               ),
             ),
             Stack(
-              alignment: Alignment.bottomCenter,
+              // alignment: Alignment.bottomCenter,
               children: [
                 PageView.builder(
                   itemCount: sliderList.length,
@@ -100,114 +100,87 @@ class _Slider_PagesState extends State<Slider_Pages> {
                   itemBuilder: (_, index) {
                     return Column(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                          child: Image.network(
-                            sliderList[index]['icon'],
-                            width: MediaQuery.of(context).size.width,
-                            height: 400,
-                          ),
+                        Image.network(
+                          sliderList[index]['icon'],
+                          width: MediaQuery.of(context).size.width,
+                          height: 400,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(20),
-                          child: SizedBox(
-                            width: MediaQuery.of(context).size.width,
-                            child: Text(
-                              sliderList[index]['title'].toString() ,
-                              style: TextStyle(
-                                  fontSize: 40, fontWeight: FontWeight.bold),
-                            ),
-                          ),
+                        Text(
+                          sliderList[index]['title'].toString() ,
+                          style: TextStyle(
+                              fontSize: 40, fontWeight: FontWeight.bold),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                          child: SizedBox(
-                            width: MediaQuery.of(context).size.width,
-                            child: Text(
-                                sliderList[index]['description'].toString(),
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 5,
-                            ),
-                          ),
+                        Text(
+                            sliderList[index]['description'].toString(),
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 5,
                         ),
                       ],
                     );
                   },
-                )
+                ),
+                // Row(
+                //   children: [
+                //     Padding(
+                //       padding: const EdgeInsets.all(8.0),
+                //       child: DotIndicator(
+                //         currentDotSize: 10,
+                //         dotSize: 6,
+                //         pageController: pageController,
+                //         pages: sliderList,
+                //         indicatorColor: kMainColor,
+                //         unselectedIndicatorColor: Colors.grey,
+                //       ),
+                //     ),
+                //     const Spacer(),
+                //     Padding(
+                //       padding: const EdgeInsets.all(8.0),
+                //       child: CircularPercentIndicator(
+                //         radius: 40.0,
+                //         lineWidth: 3.0,
+                //         progressColor: kMainColor,
+                //         percent: percent,
+                //         animation: true,
+                //         center: GestureDetector(
+                //           onTap: () {
+                //             setState(() {
+                //               currentIndexPage < 2
+                //                   ? percent = percent + 0.33
+                //                   : percent = 1.0;
+                //               currentIndexPage < 2
+                //                   ? pageController.nextPage(
+                //                   duration: const Duration(
+                //                       microseconds: 3000),
+                //                   curve: Curves.bounceInOut)
+                //                   : Navigator.push(
+                //                 context,
+                //                 MaterialPageRoute(
+                //                     builder: (context) =>
+                //                     const LogIn_Page()),
+                //               );
+                //             });
+                //           },
+                //           child: Container(
+                //
+                //             // padding: const EdgeInsets.all(20),
+                //               width: 80,
+                //               height: 80,
+                //               child: ElevatedButton(
+                //                 onPressed: () {},
+                //                 child: Icon(Icons.arrow_forward_ios),
+                //                 style: ElevatedButton.styleFrom(
+                //                   shape: CircleBorder(),
+                //                   padding: EdgeInsets.all(3),
+                //                 ),
+                //               )),
+                //         ),
+                //       ),
+                //     ),
+                //
+                //   ],
+                // ),
               ],
             ),
-            SizedBox(
-              height: 30,
-            ),
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: DotIndicator(
-                    currentDotSize: 15,
-                    dotSize: 6,
-                    pageController: pageController,
-                    pages: sliderList,
-                    indicatorColor: kMainColor,
-                    unselectedIndicatorColor: Colors.grey,
-                  ),
-                ),
-                const Spacer(),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: CircularPercentIndicator(
-                    radius: 80.0,
-                    lineWidth: 3.0,
-                    progressColor: kMainColor,
-                    percent: percent,
-                    animation: true,
-                    center: GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          currentIndexPage < 2
-                              ? percent = percent + 0.33
-                              : percent = 1.0;
-                          currentIndexPage < 2
-                              ? pageController.nextPage(
-                              duration: const Duration(
-                                  microseconds: 3000),
-                              curve: Curves.bounceInOut)
-                              : Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                const LogIn_Page()),
-                          );
-                        });
-                      },
-                      child: const CircleAvatar(
-                        radius: 35.0,
-                        backgroundColor: kMainColor,
-                        child: Center(
-                          child: Icon(
-                            Icons.arrow_forward_ios,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Container(
-                    padding: const EdgeInsets.all(20),
-                    width: 80,
-                    height: 80,
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      child: Icon(Icons.arrow_forward_ios),
-                      style: ElevatedButton.styleFrom(
-                        shape: CircleBorder(),
-                        padding: EdgeInsets.all(24),
-                      ),
-                    )),
-              ],
-            ),
-
           ],
         ),
       ),

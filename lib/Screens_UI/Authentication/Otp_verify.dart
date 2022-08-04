@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:security_guard/Constant.dart';
 import 'package:security_guard/Global_Components/otp_form.dart';
 
 class OTP_Verify extends StatefulWidget {
@@ -77,6 +78,44 @@ class _OTP_VerifyState extends State<OTP_Verify> {
                         height: 20,
                       ),
                       const OtpForm(),
+                      const SizedBox(
+                        height: 20.0,
+                      ),
+                      Container(
+
+                        padding: const EdgeInsets.all(10.0),
+                        decoration: kButtonDecoration.copyWith(color: kTitleColor.withOpacity(0.1)),
+                        child: Text(
+                          'Resend Otp',
+                          style: kTextStyle.copyWith(
+                              color: kTitleColor,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20.0,
+                      ),
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text:
+                              'You can request otp again after ',
+                              style: kTextStyle.copyWith(
+                                color: kAlertColor,
+                              ),
+                            ),
+                            TextSpan(
+                              text:
+                              '1:12',
+                              style: kTextStyle.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: kAlertColor,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                       SizedBox(
                         height: 20,
                       ),

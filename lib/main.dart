@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:security_guard/Screens_UI/Authentication//LoginPage.dart';
+import 'package:security_guard/Screens_UI/Employe_Management/Employe_Management.dart';
 import 'package:security_guard/Screens_UI/SliderBeforeLogin.dart';
 import 'package:security_guard/Screens_UI/SplashScreen.dart';
 
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
         //   ),
         // ),
       ),
-      home: Slider_Pages()
+      home: Employe_Management()
     );
   }
 }
