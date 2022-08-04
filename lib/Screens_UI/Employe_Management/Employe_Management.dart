@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:security_guard/Constant.dart';
-import 'package:security_guard/Employee_Management/Employee_List.dart';
+import 'package:security_guard/Screens_UI/Employe_Management/Employee_List.dart';
 import 'package:security_guard/Screens_UI/Authentication/LoginPage.dart';
 import 'package:security_guard/Widgets/ThemeWidget.dart';
 
